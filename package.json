@@ -1,5 +1,5 @@
 {
-  "name": "react-homework-template",
+  "name": "react-rework-05-movies",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://goitacademy.github.io/react-homework-template/",
@@ -36,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }
