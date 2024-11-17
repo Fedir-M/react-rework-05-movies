@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-rework-05-movies/static/css/main.7acaea2f.css",
-    "main.js": "/react-rework-05-movies/static/js/main.07d3183d.js",
+    "main.css": "/react-rework-05-movies/static/css/main.ee2358ad.css",
+    "main.js": "/react-rework-05-movies/static/js/main.b506190e.js",
     "index.html": "/react-rework-05-movies/index.html",
-    "main.7acaea2f.css.map": "/react-rework-05-movies/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/react-rework-05-movies/static/js/main.07d3183d.js.map"
+    "main.ee2358ad.css.map": "/react-rework-05-movies/static/css/main.ee2358ad.css.map",
+    "main.b506190e.js.map": "/react-rework-05-movies/static/js/main.b506190e.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.ee2358ad.css",
+    "static/js/main.b506190e.js"
   ]
 }
