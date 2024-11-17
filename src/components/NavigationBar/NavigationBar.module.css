@@ -1,0 +1,28 @@
+.navWrapper {
+  width: 100%;
+
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  background-color: var(--second-background-color);
+}
+
+.link {
+  padding: 5px 15px;
+
+  font-size: 18px;
+  color: var(--second-text-color);
+
+  border: 1px solid #fff;
+  border-radius: 6px;
+}
+
+.active {
+  color: var(--accent-text-color);
+
+  border: 1px solid var(--accent-text-color);
+}

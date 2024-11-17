@@ -1,0 +1,22 @@
+.button {
+  color: #f6f6f6;
+  background-color: var(--main-btn-color);
+
+  border-radius: 6px;
+
+  padding: 4px 16px;
+  transition: var(--transition-duration-and-timing-function);
+}
+
+.button:focus {
+  outline: solid 1px var(--accent-text-color);
+}
+
+.button:hover {
+  background-color: var(--second-background-color);
+}
+
+.button:active {
+  color: var(--accent-text-color);
+  outline: solid 1px var(--accent-text-color);
+}

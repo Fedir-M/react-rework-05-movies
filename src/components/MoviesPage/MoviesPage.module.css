@@ -1,0 +1,17 @@
+.moviesPageWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 34px 14px 34px;
+}
+.MoviesListOnMoviePage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 1200px;
+}

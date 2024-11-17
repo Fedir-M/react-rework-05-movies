@@ -1,0 +1,52 @@
+.listTrendingFilmsWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  padding: 10px 15px 10px 15px;
+  margin-top: 4px;
+  gap: 6px;
+}
+
+.itemMovie {
+  display: flex;
+  flex-direction: row;
+  width: 310px;
+
+  font-size: 12px;
+
+  background-color: #bacabd;
+  border-radius: 6px;
+
+  transition: var(--transition-duration-and-timing-function);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.itemMovie:hover,
+.itemMovie:focus {
+  background-color: #dae962;
+}
+
+.imageTrendingMovie {
+  width: 100px;
+}
+
+.wrapperTrendingMovieTexts {
+  display: flex;
+  justify-content: flex-start;
+  align-items: left;
+  flex-direction: column;
+
+  padding: 10px 8px 10px 8px;
+}
+
+.titleTrendMovie {
+  font-size: 16px;
+  color: var(--main-text-color);
+}
+
+.pWrapperTrendMovie {
+  margin-top: 14px;
+}
