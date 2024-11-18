@@ -38,3 +38,12 @@ export async function getMoviesByQuery(query, page = 1) {
 
   return result.json();
 }
+
+export async function fetchMovieDetails(movie_id) {
+  const url = `${BASE_URL}/movie/${movie_id}`;
+  console.log('Fetching from URL:', url);
+
+  const result = await fetch(url, options);
+  if (!result.ok) throw new Error('Failed to fetch movie details');
+  return result.json();
+}
