@@ -12,7 +12,7 @@ const MovieDetails = ({}) => {
   const { movie_id } = useParams();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  //   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // console.log('Fetching details for movie_id:', movie_id);
