@@ -15,8 +15,8 @@ const MovieDetails = ({}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log('Fetching details for movie_id:', movie_id);
-    // if (!movie) return setIsLoading(true);
+    // console.log('Fetching details for movie_id:', movie_id);
+    // if (!movie) return setIsLoading(true); //не понял почуму все таки это мешало
 
     const getMovieDetails = async () => {
       try {
