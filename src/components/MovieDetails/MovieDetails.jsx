@@ -26,7 +26,7 @@ const MovieDetails = ({}) => {
         console.error('Error fetching movie details:', err);
         setError(err.message);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     };
     getMovieDetails();
