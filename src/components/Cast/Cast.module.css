@@ -1,0 +1,53 @@
+.castListTitle {
+  text-align: center;
+}
+
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.castItem {
+  min-width: 160px;
+  text-align: center;
+
+  background-color: var(--second-background-color);
+  border-radius: 6px;
+
+  transition: var(--transition-duration-and-timing-function);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.castItem:hover,
+.castItem:focus {
+  background-color: #dae962;
+}
+
+.castItem:hover .actorImage,
+.castItem:focus .actorImage {
+  filter: none;
+}
+
+.actorImage {
+  width: 180px;
+  height: auto;
+
+  filter: grayscale(40%) contrast(35%) sepia(30%) hue-rotate(340deg) saturate(1);
+}
+
+.actorName {
+  font-weight: 700;
+}
+
+.characterName {
+  display: block;
+  font-family: 'Great Vibes', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+
+  color: var(--second-text-color);
+}

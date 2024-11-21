@@ -1,0 +1,72 @@
+.wrapperMoviesDetails {
+  padding: 20px;
+}
+
+.itemDetails {
+  display: flex;
+}
+
+.itemDetails:hover .titleDetails {
+  color: var(--second-text-color);
+}
+
+.imagePosterDetails {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.imagePosterDetails:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.textWrapperDetails {
+  padding: 0px 16px 0px 16px;
+}
+
+.titleDetails {
+  position: relative;
+  display: block;
+  font-family: 'Great Vibes', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+
+  margin-left: 4px;
+  padding: 0;
+  color: var(--second-background-color);
+
+  transition: color 0.3s ease;
+}
+
+.scoreDetailsSpan {
+  color: var(--second-background-color);
+}
+
+.wrapperCastReview {
+  display: flex;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.linkDetails {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--second-background-color);
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Анимация */
+}
+
+.linkDetails:hover {
+  color: var(--accent-text-color);
+  background-color: var(--main-btn-color);
+}
+
+.active {
+  color: white;
+  background-color: var(--accent-text-color);
+}

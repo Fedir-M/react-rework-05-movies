@@ -21,3 +21,8 @@
 
   padding: 0;
 }
+
+.itemMovie:hover,
+.itemMovie:focus {
+  background-color: #dae962;
+}

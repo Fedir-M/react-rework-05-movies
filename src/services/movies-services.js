@@ -41,9 +41,25 @@ export async function getMoviesByQuery(query, page = 1) {
 
 export async function fetchMovieDetails(movie_id) {
   const url = `${BASE_URL}/movie/${movie_id}`;
-  console.log('Fetching from URL:', url);
+  // console.log('Fetching from URL:', url);
 
   const result = await fetch(url, options);
   if (!result.ok) throw new Error('Failed to fetch movie details');
+  return result.json();
+}
+
+export async function fetchMovieCredits(movie_id) {
+  const url = `${BASE_URL}/movie/${movie_id}/credits`;
+
+  const result = await fetch(url, options);
+  if (!result.ok) throw new Error('Failed to fetch movie credits');
+  return result.json();
+}
+
+export async function fetchMovieReviews(movie_id) {
+  const url = `${BASE_URL}/movie/${movie_id}/reviews`;
+
+  const result = await fetch(url, options);
+  if (!result.ok) throw new Error('Failed to fetch movie reviews');
   return result.json();
 }

@@ -1,0 +1,25 @@
+.expandableText {
+  position: relative;
+}
+
+.clampedText {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Ограничивает строки до 1 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fullText {
+  display: block;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: var(--second-text-color);
+  cursor: pointer;
+  margin-top: 5px;
+  padding: 0;
+  font-size: 14px;
+  text-decoration: underline;
+}

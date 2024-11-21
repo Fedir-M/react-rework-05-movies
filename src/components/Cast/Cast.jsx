@@ -1,7 +1,56 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchMovieCredits } from '../../services/movies-services';
+
+import defaultCastPhoto from '../../images/green-ava.webp';
 import s from './Cast.module.css';
 
 const Cast = () => {
-  return <div>Cast</div>;
+  const { movie_id } = useParams();
+  const [cast, setCast] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getCast = async () => {
+      try {
+        const credits = await fetchMovieCredits(movie_id);
+        setCast(credits.cast);
+      } catch (err) {
+        console.error('Error fetching cast:', err);
+        setError(err.message);
+      }
+    };
+
+    getCast();
+  }, [movie_id]);
+
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <div className={s.wrapperCast}>
+      <h3 className={s.castListTitle}>CAST</h3>
+      <ul className={s.castList}>
+        {cast.map(actor => (
+          <li key={actor.id} className={s.castItem}>
+            <img
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+                  : defaultCastPhoto
+              }
+              alt={actor.name}
+              className={s.actorImage}
+            />
+            <p className={s.actorName}>{actor.name}</p>
+            <p className={s.characterName}>as {actor.character || 'Unknown'}</p>
+            <p className={s.characterPopularity}>
+              Popularity: {actor.popularity || 'Unknown'}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Cast;

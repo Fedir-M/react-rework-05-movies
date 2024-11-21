@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import clsx from 'clsx';
 import { ProgressBar } from 'react-loader-spinner';
 
@@ -8,14 +8,14 @@ import defaultPoster from '../../images/lfc-logo.webp';
 
 import s from './MovieDetails.module.css';
 
-const MovieDetails = ({}) => {
+const MovieDetails = () => {
   const { movie_id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState([]);
   const [error, setError] = useState(null);
   //   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // console.log('Fetching details for movie_id:', movie_id);
+    console.log('Fetching details for movie_id:', movie_id);
     // if (!movie) return setIsLoading(true); //не понял почуму все таки это мешало
 
     const getMovieDetails = async () => {
@@ -35,52 +35,60 @@ const MovieDetails = ({}) => {
   if (error) return <p>Error: {error}</p>;
 
   return movie ? (
-    <div className={s.wrapperMoviesDetails}>
-      <ul className={s.listMovieDetails}>
-        <li className={s.itemDetails} key={movie_id}>
-          <img
-            className={s.imagePosterDetails}
-            src={
-              movie.poster_path
-                ? `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
-                : defaultPoster
+    <>
+      <div className={s.wrapperMoviesDetails}>
+        <ul className={s.listMovieDetails}>
+          <li className={s.itemDetails} key={movie_id}>
+            <img
+              className={s.imagePosterDetails}
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
+                  : defaultPoster
+              }
+              alt={movie.title}
+            />
+
+            <div className={s.textWrapperDetails}>
+              <h2 className={s.titleDetails}>" {movie.title} "</h2>
+              <h3 className={s.scoreDetails}>
+                <span className={s.scoreDetailsSpan}>Score: </span>
+                {(movie.vote_average || 0).toFixed(1)}/10
+              </h3>
+              <h3 className={s.overviewDetailsTitle}>Overview</h3>
+              <p className={s.overviewDetailsDiscription}>{movie.overview}</p>
+              <h3 className={s.genresDetailsTitle}>Genres</h3>
+              <p className={s.genresDetailsDiscription}>
+                {movie.genres && movie.genres.length > 0
+                  ? movie.genres.map(genre => genre.name).join(', ')
+                  : 'No genres available'}
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <div className={s.wrapperCastReview}>
+          <NavLink
+            to={'cast'}
+            className={({ isActive }) =>
+              clsx(s.linkDetails, isActive && s.active)
             }
-            alt={movie.title}
-          />
+          >
+            CAST
+          </NavLink>
 
-          <h2 className={s.titleDetails}>{movie.title}</h2>
-          <h3 className={s.scoreDetails}>Score: {movie.vote_average}/10</h3>
-          <h3 className={s.overviewDetailsTitle}>Overview</h3>
-          <p className={s.overviewDetailsDiscription}>{movie.overview}</p>
-          <h3 className={s.genresDetailsTitle}>Genres</h3>
-          <p className={s.genresDetailsDiscription}>
-            {movie.genres && movie.genres.length > 0
-              ? movie.genres.map(genre => genre.name).join(', ')
-              : 'No genres available'}
-          </p>
-        </li>
-      </ul>
-
-      <div className={s.wrapper}>
-        <NavLink
-          to={'/movies/movie_id/cast'}
-          className={({ isActive }) =>
-            clsx(s.linkDetails, isActive && s.active)
-          }
-        >
-          Cast
-        </NavLink>
-
-        <NavLink
-          to={'/movies/movie_id/reviews'}
-          className={({ isActive }) =>
-            clsx(s.linkDetails, isActive && s.active)
-          }
-        >
-          Reviews
-        </NavLink>
+          <NavLink
+            to={'reviews'}
+            className={({ isActive }) =>
+              clsx(s.linkDetails, isActive && s.active)
+            }
+          >
+            REVIEWS
+          </NavLink>
+        </div>
       </div>
-    </div>
+      <Outlet />
+    </>
   ) : (
     <div>
       <ProgressBar

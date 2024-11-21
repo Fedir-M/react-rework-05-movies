@@ -1,0 +1,47 @@
+.wrapperReviews {
+  padding: 16px 8px 16px 8px;
+}
+
+.castListTitle {
+  text-align: center;
+}
+
+.listReviews {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: flex-start; */
+  row-gap: 8px;
+}
+
+.itemReviews {
+  background-color: rgba(159, 159, 159, 0.378);
+
+  padding: 8px 16px 8px 16px;
+  border-radius: 6px;
+}
+
+.autorDetailsContainer {
+  display: flex;
+  margin-top: 16px;
+}
+
+.autorDetailsContainerTwo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+.imageReviews {
+  width: 50px;
+  height: auto;
+}
+
+.ratingReviews {
+  font-weight: 600;
+  color: var(--second-text-color);
+}
+
+.spanNA {
+  color: var(--btn-color-hover-focus);
+}

@@ -12,13 +12,13 @@ import Reviews from './Reviews/Reviews';
 
 const App = () => {
   return (
-    <div>
+    <>
       {/* <NavigationBar /> */}
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path="movies" element={<MoviesPage />}></Route>
-          <Route path="movies/:movie_id" element={<MovieDetails />}>
+          <Route path="/movies/:movie_id" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
@@ -26,7 +26,7 @@ const App = () => {
           <Route path="actors" element={<Actors />} />
         </Route>
       </Routes>
-    </div>
+    </>
   );
 };
 
