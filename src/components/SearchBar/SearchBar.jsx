@@ -2,17 +2,23 @@ import Button from 'components/Button/Button';
 import { useState } from 'react';
 
 import s from './SearchBar.module.css';
+import { useSearchParams } from 'react-router-dom';
 
-const SearchBar = ({ changeQuery, pageChange }) => {
-  const [inputQuery, setInputQuery] = useState('');
-
+const SearchBar = ({
+  placeholder = 'Search movie',
+  className = '',
+  paramQuery = 'movieQuery',
+}) => {
+  // eslint-disable-next-line no-unused-vars
+  const [searchParams, setsearchParams] = useSearchParams();
+  const [inputQuery, setInputQuery] = useState(
+    searchParams.get(paramQuery) ?? ''
+  );
   const handleSubmit = e => {
     e.preventDefault();
     if (inputQuery.trim() === '') return;
 
-    pageChange(1);
-    changeQuery(inputQuery.trim());
-    // setInputQuery('');
+    setsearchParams({ query: inputQuery.trim(), page: 1 });
   };
 
   return (
@@ -20,7 +26,7 @@ const SearchBar = ({ changeQuery, pageChange }) => {
       <input
         onChange={e => setInputQuery(e.target.value)}
         value={inputQuery}
-        placeholder="Search movie"
+        placeholder={placeholder}
         className={s.inputSearch}
       />
       <Button className={s.buttonSearch} label="Search" type="submit" />

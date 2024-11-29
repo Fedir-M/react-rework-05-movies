@@ -11,8 +11,14 @@
 }
 
 .castItem {
+  display: flex;
   min-width: 160px;
+  width: 180px;
+  height: 350px;
   text-align: center;
+  flex-direction: column;
+  justify-content: start;
+  /* align-items: center; */
 
   background-color: var(--second-background-color);
   border-radius: 6px;
@@ -33,21 +39,33 @@
 }
 
 .actorImage {
-  width: 180px;
-  height: auto;
+  width: 100%;
+  max-height: 65%;
+  display: block;
+  object-fit: cover;
 
   filter: grayscale(40%) contrast(35%) sepia(30%) hue-rotate(340deg) saturate(1);
 }
 
+.actorImage.default {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* max-width: 20%;
+  max-height: 20%; */
+  /* margin-top: 48px; */
+}
+
 .actorName {
   font-weight: 700;
+  margin-top: 3px;
 }
 
 .characterName {
   display: block;
   font-family: 'Great Vibes', Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 30px;
+  font-weight: 200;
+  font-size: 24px;
 
   color: var(--second-text-color);
 }

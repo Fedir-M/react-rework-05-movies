@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import clsx from 'clsx';
 import { ProgressBar } from 'react-loader-spinner';
+import Button from 'components/Button/Button';
 
 import { fetchMovieDetails } from '../../services/movies-services';
 import defaultPoster from '../../images/lfc-logo.webp';
@@ -12,10 +19,19 @@ const MovieDetails = () => {
   const { movie_id } = useParams();
   const [movie, setMovie] = useState([]);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
   //   const [isLoading, setIsLoading] = useState(false);
 
+  const handleGoBack = () => {
+    const { state: lastLocation } = location;
+    // console.log('lastLocation>>', lastLocation);
+    navigate(lastLocation ? lastLocation : '/');
+  };
+
   useEffect(() => {
-    console.log('Fetching details for movie_id:', movie_id);
+    // console.log('Fetching details for movie_id:', movie_id);
     // if (!movie) return setIsLoading(true); //не понял почуму все таки это мешало
 
     const getMovieDetails = async () => {
@@ -37,6 +53,12 @@ const MovieDetails = () => {
   return movie ? (
     <>
       <div className={s.wrapperMoviesDetails}>
+        <Button
+          onClick={handleGoBack}
+          label=" << Back"
+          type="button"
+          className={s.goBackButton}
+        />
         <ul className={s.listMovieDetails}>
           <li className={s.itemDetails} key={movie_id}>
             <img
@@ -70,6 +92,7 @@ const MovieDetails = () => {
         <div className={s.wrapperCastReview}>
           <NavLink
             to={'cast'}
+            state={location.state}
             className={({ isActive }) =>
               clsx(s.linkDetails, isActive && s.active)
             }
@@ -79,6 +102,7 @@ const MovieDetails = () => {
 
           <NavLink
             to={'reviews'}
+            state={location.state}
             className={({ isActive }) =>
               clsx(s.linkDetails, isActive && s.active)
             }

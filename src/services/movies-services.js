@@ -19,7 +19,7 @@ export async function fetchTrendingMovies() {
       return res.json();
     })
     .then(data => {
-      console.log('Fetched movies:', data.results);
+      // console.log('Fetched movies:', data.results);
       return data.results;
     }) // Возвращаем массив фильмов
 
@@ -61,5 +61,13 @@ export async function fetchMovieReviews(movie_id) {
 
   const result = await fetch(url, options);
   if (!result.ok) throw new Error('Failed to fetch movie reviews');
+  return result.json();
+}
+
+export async function getActorsByQuery(query, page = 1) {
+  const url = `${BASE_URL}/search/person`;
+
+  const result = await fetch(url, options);
+  if (!result.ok) throw new Error('No actors are found here.');
   return result.json();
 }

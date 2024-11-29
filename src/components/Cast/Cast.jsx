@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCredits } from '../../services/movies-services';
 
-import defaultCastPhoto from '../../images/green-ava.webp';
+import defaultCastPhoto from '../../images/green-ava2 (1).webp';
 import s from './Cast.module.css';
 
 const Cast = () => {
@@ -39,7 +39,11 @@ const Cast = () => {
                   : defaultCastPhoto
               }
               alt={actor.name}
-              className={s.actorImage}
+              className={
+                actor.profile_path
+                  ? s.actorImage
+                  : `${s.actorImage} ${s.default}`
+              }
             />
             <p className={s.actorName}>{actor.name}</p>
             <p className={s.characterName}>as {actor.character || 'Unknown'}</p>

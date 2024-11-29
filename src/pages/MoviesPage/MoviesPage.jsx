@@ -6,11 +6,18 @@ import { getMoviesByQuery } from 'services/movies-services';
 import { ProgressBar } from 'react-loader-spinner';
 
 import s from './MoviesPage.module.css';
+import { useSearchParams } from 'react-router-dom';
+
+// ../movies/?query=cat&page=2
 
 const MoviesPage = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  //
+  const searchQuery = searchParams.get('query') ?? '';
+  const page = Number(searchParams.get('page')) || 1;
+  // const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -36,7 +43,7 @@ const MoviesPage = () => {
   }, [searchQuery, page]);
 
   const onLoadMore = () => {
-    setPage(prevPage => prevPage + 1);
+    setSearchParams({ query: searchQuery, page: page + 1 });
   };
 
   return (
@@ -52,7 +59,7 @@ const MoviesPage = () => {
           wrapperClass={s.customProgressBar}
         />
       )}
-      <SearchBar changeQuery={setSearchQuery} pageChange={setPage} />
+      <SearchBar />
       <MoviesList
         className={s.MoviesListOnMoviePage}
         data={movies}

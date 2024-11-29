@@ -1,14 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import defaultPoster from '../../images/lfc-logo.webp';
 
 import s from './MoviesList.module.css';
 
-const MoviesList = ({ data, baseUrl, sortedMovies }) => {
+const MoviesList = ({ data, baseUrl }) => {
+  const location = useLocation();
   return (
     <ul className={s.listTrendingFilmsWrapper}>
       {data?.map(movie => (
-        <Link className={s.linkMovieList} to={`/movies/${movie.id}`}>
+        <Link
+          className={s.linkMovieList}
+          to={`/movies/${movie.id}`}
+          state={location}
+        >
           <li key={movie.id} className={s.itemMovie}>
             <img
               className={s.imageTrendingMovie}

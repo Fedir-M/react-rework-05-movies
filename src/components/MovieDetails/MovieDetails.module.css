@@ -2,6 +2,10 @@
   padding: 20px;
 }
 
+.listMovieDetails {
+  margin-top: 8px;
+}
+
 .itemDetails {
   display: flex;
 }

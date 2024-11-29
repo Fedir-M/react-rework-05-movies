@@ -29,39 +29,43 @@ const Reviews = () => {
   return (
     <div className={s.wrapperReviews}>
       <h3 className={s.castListTitle}>REVIEWS</h3>
-      <ul className={s.listReviews}>
-        {reviews.map(review => (
-          <li key={review.id} className={s.itemReviews}>
-            <ExpandableText text={review.content} />
-            <div className={s.autorDetailsContainer}>
-              <img
-                className={s.imageReviews}
-                src={
-                  review.author_details.avatar_path
-                    ? `https://image.tmdb.org/t/p/w200${review.author_details.avatar_path}`
-                    : spyPhoto
-                }
-                alt={review.username}
-              />
-              <div className={s.autorDetailsContainerTwo}>
-                <p className={s.usernameReviews}>{review.username}</p>
-                <p className={s.ratingReviews}>
-                  Like:{' '}
-                  {review.rating || <span className={s.spanNA}>'N/A'</span>}
-                </p>
-                <p className={s.dateAtReviews}>
-                  Created at:{' '}
-                  {new Date(review.created_at).toLocaleDateString('en-US', {
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric',
-                  })}
-                </p>
+      {reviews.length === 0 ? (
+        <p className={s.noReviewsMessage}>There are NO reviews yet.</p>
+      ) : (
+        <ul className={s.listReviews}>
+          {reviews.map(review => (
+            <li key={review.id} className={s.itemReviews}>
+              <ExpandableText text={review.content} />
+              <div className={s.autorDetailsContainer}>
+                <img
+                  className={s.imageReviews}
+                  src={
+                    review.author_details.avatar_path
+                      ? `https://image.tmdb.org/t/p/w200${review.author_details.avatar_path}`
+                      : spyPhoto
+                  }
+                  alt={review.username}
+                />
+                <div className={s.autorDetailsContainerTwo}>
+                  <p className={s.usernameReviews}>{review.username}</p>
+                  <p className={s.ratingReviews}>
+                    Like:{' '}
+                    {review.rating || <span className={s.spanNA}>'N/A'</span>}
+                  </p>
+                  <p className={s.dateAtReviews}>
+                    Created at:{' '}
+                    {new Date(review.created_at).toLocaleDateString('en-US', {
+                      month: 'long',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })}
+                  </p>
+                </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
