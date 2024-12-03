@@ -28,7 +28,7 @@ const ActorsAllMoviePage = () => {
       setIsLoading(true);
       try {
         const result = await getMoviesByActor(actor_id, page);
-        console.log('comes from Api :>>', result);
+        console.log('getMoviesByActor from Api :>>', result);
         setMovies(result.results);
       } catch (error) {
         console.error('Error fetching movies:', error);
