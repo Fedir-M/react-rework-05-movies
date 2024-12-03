@@ -1,0 +1,79 @@
+.wrapperActorsAllMoviePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px 10px 16px;
+}
+
+.wrapperImageAndText {
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.actorImage {
+  display: block;
+  max-width: 100%;
+  padding: 0 0 0 16px;
+}
+
+.wrapperImageTexts {
+  padding: 0 16px 0 16px;
+}
+
+.actorNameAllMovies {
+  font-size: 34px;
+  margin-top: 16px;
+  color: var(--second-text-color);
+}
+
+.knownForAllMovies {
+  margin-top: 24px;
+}
+
+.knownForAllMovies,
+.actorPopularityAllMovies {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.spanText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--btn-color-hover-focus);
+}
+
+.listAllActorMovies {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+  column-gap: 8px;
+  row-gap: 12px;
+}
+
+.itemAllMovies {
+  max-width: 160px;
+  padding: 6px;
+
+  background-color: #bacabd;
+}
+
+.titleAllMovies {
+  color: var(--second-text-color);
+  text-align: center;
+  font-size: 16px;
+}
+
+.textAllMovies {
+  color: var(--main-text-color);
+  text-align: left;
+  font-size: 12px;
+}
+
+.loadMoreButtonActorAllMovies {
+  margin-top: 12px;
+}

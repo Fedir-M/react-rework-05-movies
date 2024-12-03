@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import SearchBar from 'components/SearchBar/SearchBar';
 import ActorsList from 'components/ActorsList/ActorsList';
 import { ProgressBar } from 'react-loader-spinner';
+import Button from 'components/Button/Button';
 import { getActorsByQuery } from '../../services/movies-services';
 
 import s from './ActorsPage.module.css';
@@ -23,6 +24,7 @@ const ActorsPage = () => {
 
       try {
         const result = await getActorsByQuery(actorsQuery, page);
+        // console.log('actor from api>>', result);
         setActors(prevActors =>
           page === 1 ? result.results : [...prevActors, ...result.results]
         );
@@ -38,9 +40,12 @@ const ActorsPage = () => {
   const onLoadMoreActors = () => {
     setSearchParams({ query: actorsQuery, page: page + 1 });
   };
+
+  const sortedPopularity = actors.sort((a, b) => b.popularity - a.popularity);
+
   return (
-    <div>
-      <h2>Actors</h2>
+    <div className={s.ActorPageWrapper}>
+      <h2 className={s.titleActorPage}>You can find your actor here.</h2>
       <SearchBar
         paramQuery="actorQuery"
         placeholder="Search your actor"
@@ -50,6 +55,7 @@ const ActorsPage = () => {
         data={actors}
         baseUrl="https://image.tmdb.org/t/p/w200"
         className={s.actorsList}
+        sortedPopularity={sortedPopularity}
       />
       {isLoading && (
         <ProgressBar
@@ -62,9 +68,12 @@ const ActorsPage = () => {
         />
       )}
       {!isLoading && actors.length > 0 && (
-        <button onClick={onLoadMoreActors} className={s.loadMoreButton}>
-          Load more...
-        </button>
+        <Button
+          onClick={onLoadMoreActors}
+          label="Load more..."
+          type="button"
+          className={s.loadMoreButton}
+        />
       )}
     </div>
   );

@@ -28,6 +28,7 @@ const MoviesPage = () => {
 
       try {
         const result = await getMoviesByQuery(searchQuery, page);
+        console.log('Movies data>>', result);
         setMovies(prevMovies =>
           page === 1 ? result.results : [...prevMovies, ...result.results]
         );

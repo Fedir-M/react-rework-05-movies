@@ -65,9 +65,25 @@ export async function fetchMovieReviews(movie_id) {
 }
 
 export async function getActorsByQuery(query, page = 1) {
-  const url = `${BASE_URL}/search/person`;
+  const url = `${BASE_URL}/search/person?query=${query}&page=${page}`;
 
   const result = await fetch(url, options);
   if (!result.ok) throw new Error('No actors are found here.');
+  return result.json();
+}
+
+export async function getMoviesByActor(actor_id, page = 1) {
+  const url = `${BASE_URL}/discover/movie?with_cast=${actor_id}&page=${page}`;
+
+  const result = await fetch(url, options);
+  if (!result.ok) throw new Error('Failed to fetch the movies of this actor');
+  return result.json();
+}
+
+export async function getActorPhotoAndInfo(actor_id) {
+  const url = `${BASE_URL}/person/${actor_id}`;
+
+  const result = await fetch(url, options);
+  if (!result.ok) throw new Error('Failed to fetch actor photo & info');
   return result.json();
 }

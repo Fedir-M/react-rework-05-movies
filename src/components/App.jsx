@@ -7,6 +7,7 @@ import ActorsPage from 'pages/ActorsPage/ActorsPage';
 import MovieDetails from './MovieDetails/MovieDetails';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
+import ActorsAllMoviePage from 'pages/ActorsAllMoviePage/ActorsAllMoviePage';
 
 // import NavigationBar from './NavigationBar/NavigationBar';
 
@@ -24,6 +25,10 @@ const App = () => {
           </Route>
           {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="actors" element={<ActorsPage />} />
+          <Route
+            path="/actors/:actor_id/movies"
+            element={<ActorsAllMoviePage />}
+          />
         </Route>
       </Routes>
     </>
