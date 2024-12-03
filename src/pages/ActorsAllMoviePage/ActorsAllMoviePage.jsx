@@ -23,6 +23,7 @@ const ActorsAllMoviePage = () => {
 
   useEffect(() => {
     // console.log('Actor ID :>>', actor_id);
+    //
 
     const fetchMovies = async () => {
       setIsLoading(true);
