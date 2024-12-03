@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/react-rework-05-movies/static/css/main.9b92fe26.css",
-    "main.js": "/react-rework-05-movies/static/js/main.7d99c9d4.js",
+    "main.css": "/react-rework-05-movies/static/css/main.e8115625.css",
+    "main.js": "/react-rework-05-movies/static/js/main.b36c8c41.js",
     "static/media/spy_1024x1024.webp": "/react-rework-05-movies/static/media/spy_1024x1024.7f167d23ac3d6126b9c2.webp",
-    "static/media/green-ava.webp": "/react-rework-05-movies/static/media/green-ava.32c9e5c924b775576600.webp",
     "static/media/lfc-logo.webp": "/react-rework-05-movies/static/media/lfc-logo.033252ee7c489f4b5bcf.webp",
+    "static/media/green-ava2.webp": "/react-rework-05-movies/static/media/green-ava2.c3f0d920cbab03e847cd.webp",
+    "static/media/green-ava2 (1).webp": "/react-rework-05-movies/static/media/green-ava2 (1).960227c5140e1c78b7a7.webp",
     "index.html": "/react-rework-05-movies/index.html",
-    "main.9b92fe26.css.map": "/react-rework-05-movies/static/css/main.9b92fe26.css.map",
-    "main.7d99c9d4.js.map": "/react-rework-05-movies/static/js/main.7d99c9d4.js.map"
+    "main.e8115625.css.map": "/react-rework-05-movies/static/css/main.e8115625.css.map",
+    "main.b36c8c41.js.map": "/react-rework-05-movies/static/js/main.b36c8c41.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b92fe26.css",
-    "static/js/main.7d99c9d4.js"
+    "static/css/main.e8115625.css",
+    "static/js/main.b36c8c41.js"
   ]
 }
