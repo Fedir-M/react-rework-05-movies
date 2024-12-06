@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchBar from 'components/SearchBar/SearchBar';
 import ActorsList from 'components/ActorsList/ActorsList';
@@ -51,12 +51,14 @@ const ActorsPage = () => {
         placeholder="Search your actor"
         className={s.SearchBarActors}
       />
-      <ActorsList
-        data={actors}
-        baseUrl="https://image.tmdb.org/t/p/w200"
-        className={s.actorsList}
-        sortedPopularity={sortedPopularity}
-      />
+      <Suspense fallback={<ProgressBar />}>
+        <ActorsList
+          data={actors}
+          baseUrl="https://image.tmdb.org/t/p/w200"
+          className={s.actorsList}
+          sortedPopularity={sortedPopularity}
+        />
+      </Suspense>
       {isLoading && (
         <ProgressBar
           height="80"

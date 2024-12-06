@@ -1,12 +1,14 @@
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
 import {
   getActorPhotoAndInfo,
   getMoviesByActor,
 } from 'services/movies-services';
-import { ProgressBar } from 'react-loader-spinner';
+
+import ActorProfile from 'components/ActorProfile/ActorProfile';
 import Button from 'components/Button/Button';
-import defaultProfile from '../../images/green-ava2.webp';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 import s from './ActorsAllMoviePage.module.css';
 
@@ -15,29 +17,15 @@ const ActorsAllMoviePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || 1;
   //
+  const [actorPhotoAndInfo, setActorPhotoAndInfo] = useState({});
   const [movies, setMovies] = useState([]);
-  const [actorPhotoAndInfo, setActorPhotoAndInfo] = useState([]);
+  const [moviesCount, setMoviesCount] = useState(0);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const baseUrl = 'https://image.tmdb.org/t/p/w200';
 
   useEffect(() => {
-    // console.log('Actor ID :>>', actor_id);
-    //
-
-    const fetchMovies = async () => {
-      setIsLoading(true);
-      try {
-        const result = await getMoviesByActor(actor_id, page);
-        console.log('getMoviesByActor from Api :>>', result);
-        setMovies(result.results);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     const fetchActorPhotoAndInfo = async () => {
       try {
         const result = await getActorPhotoAndInfo(actor_id);
@@ -48,8 +36,27 @@ const ActorsAllMoviePage = () => {
       }
     };
 
-    fetchMovies();
     fetchActorPhotoAndInfo();
+  }, [actor_id]);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      setIsLoading(true);
+      try {
+        const result = await getMoviesByActor(actor_id, page);
+        // console.log('getMoviesByActor from Api :>>', result);
+        setMovies(prevMovies =>
+          page === 1 ? result.results : [...prevMovies, ...result.results]
+        );
+        setMoviesCount(result.results.length);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMovies();
   }, [actor_id, page]);
 
   const movieYearRealiseSorted = [...movies].sort((a, b) => {
@@ -64,80 +71,16 @@ const ActorsAllMoviePage = () => {
 
   return (
     <div className={s.wrapperActorsAllMoviePage}>
-      {isLoading && (
-        <ProgressBar
-          height="80"
-          width="150"
-          ariaLabel="progress-bar-loading"
-          barColor="#dae962"
-          borderColor="#125a1f"
-          className={s.loader}
+      {actorPhotoAndInfo.name && (
+        <ActorProfile
+          actor_id={actor_id}
+          baseUrl={baseUrl}
+          data={actorPhotoAndInfo}
         />
       )}
-      <div className={s.wrapperImageAndText}>
-        <img
-          src={
-            actorPhotoAndInfo.profile_path
-              ? `${baseUrl}${actorPhotoAndInfo.profile_path}`
-              : defaultProfile
-          }
-          alt={actorPhotoAndInfo.name}
-          className={
-            actorPhotoAndInfo.profile_path
-              ? s.actorImage
-              : `${s.actorImage} ${s.default}`
-          }
-        />
-        <div className={s.wrapperImageTexts}>
-          <h2 className={s.actorNameAllMovies}>{actorPhotoAndInfo.name}</h2>
-          <p className={s.knownForAllMovies}>
-            <span className={s.spanText}>Known for: </span>
-            {Array.isArray(actorPhotoAndInfo.also_known_as)
-              ? actorPhotoAndInfo.also_known_as.join(', ')
-              : 'Unknown'}
-          </p>
-          <p className={s.actorPopularityAllMovies}>
-            <span className={s.spanText}>Place of birth: </span>
-            {actorPhotoAndInfo.place_of_birth}
-          </p>
-          <p className={s.actorPopularityAllMovies}>
-            <span className={s.spanText}>Birthday : </span>
-            {actorPhotoAndInfo.birthday}
-            <p className={s.actorPopularityAllMovies}>
-              <span className={s.spanText}>Deathday: </span>
-              {actorPhotoAndInfo.deathday || 'Still alive =)'}
-            </p>
-          </p>
 
-          <p className={s.actorPopularityAllMovies}>
-            <span className={s.spanText}>Popularity: </span>
-
-            {typeof actorPhotoAndInfo.popularity === 'number'
-              ? actorPhotoAndInfo.popularity.toFixed(2)
-              : 'Unknown'}
-          </p>
-        </div>
-      </div>
-
-      <ul className={s.listAllActorMovies}>
-        {movieYearRealiseSorted.map(movie => (
-          <li key={movie.id} className={s.itemAllMovies}>
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              alt={movie.title}
-              className={s.movieImage}
-            />
-            <h3 className={s.titleAllMovies}>{movie.title}</h3>
-            <p className={s.textAllMovies}>
-              Release date: {movie.release_date}
-            </p>
-            <p className={s.textAllMovies}>
-              Vote average: {movie.vote_average}
-            </p>
-          </li>
-        ))}
-      </ul>
-      {!isLoading && movies.length > 0 && (
+      <MoviesList data={movieYearRealiseSorted} baseUrl={baseUrl} />
+      {!isLoading && movies.length > 0 && moviesCount === 20 && (
         <Button
           onClick={onLoadMoreActorAllMovies}
           label="Load more..."

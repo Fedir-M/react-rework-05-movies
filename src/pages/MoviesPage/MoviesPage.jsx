@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Button from 'components/Button/Button';
 import MoviesList from 'components/MoviesList/MoviesList';
 import SearchBar from 'components/SearchBar/SearchBar';
@@ -17,6 +18,7 @@ const MoviesPage = () => {
   const page = Number(searchParams.get('page')) || 1;
   // const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [totalPages, setTotelPages] = useState(1);
   // const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,6 +34,7 @@ const MoviesPage = () => {
         setMovies(prevMovies =>
           page === 1 ? result.results : [...prevMovies, ...result.results]
         );
+        setTotelPages(result.total_pages);
 
         // setSearchQuery('');
       } catch (error) {
@@ -47,8 +50,11 @@ const MoviesPage = () => {
     setSearchParams({ query: searchQuery, page: page + 1 });
   };
 
+  console.log(totalPages);
+
   return (
     <div className={s.moviesPageWrapper}>
+      <SearchBar />
       {isLoading && (
         <ProgressBar
           height="80"
@@ -60,13 +66,14 @@ const MoviesPage = () => {
           wrapperClass={s.customProgressBar}
         />
       )}
-      <SearchBar />
-      <MoviesList
-        className={s.MoviesListOnMoviePage}
-        data={movies}
-        baseUrl="https://image.tmdb.org/t/p/w200"
-      />
-      {!isLoading && movies.length > 0 && (
+      <Suspense fallback={<ProgressBar />}>
+        <MoviesList
+          className={s.MoviesListOnMoviePage}
+          data={movies}
+          baseUrl="https://image.tmdb.org/t/p/w200"
+        />
+      </Suspense>
+      {!isLoading && movies.length > 0 && totalPages > page && (
         <Button
           onClick={onLoadMore}
           label="Load more..."

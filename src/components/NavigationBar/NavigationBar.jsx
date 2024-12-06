@@ -6,7 +6,6 @@ import s from './NavigationBar.module.css';
 const NavigationBar = () => {
   const location = useLocation();
 
-  console.log(location);
   return (
     <div className={s.navWrapper}>
       <NavLink

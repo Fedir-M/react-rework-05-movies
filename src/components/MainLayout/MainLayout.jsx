@@ -1,12 +1,11 @@
-import { Outlet } from 'react-router-dom';
-
 import NavigationBar from 'components/NavigationBar/NavigationBar';
+
+import s from '../MainLayout/MainLayout.module.css';
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className={s.wrapperMainLayout}>
       <NavigationBar />
-      <Outlet />
     </div>
   );
 };

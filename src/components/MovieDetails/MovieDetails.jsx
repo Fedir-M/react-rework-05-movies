@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import {
   NavLink,
   Outlet,
@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import clsx from 'clsx';
 import { ProgressBar } from 'react-loader-spinner';
+import { BarLoader } from 'react-spinners';
 import Button from 'components/Button/Button';
 
 import { fetchMovieDetails } from '../../services/movies-services';
@@ -64,7 +65,7 @@ const MovieDetails = () => {
             <img
               className={s.imagePosterDetails}
               src={
-                movie.poster_path
+                movie?.poster_path
                   ? `https://image.tmdb.org/t/p/w200/${movie.poster_path}`
                   : defaultPoster
               }
@@ -111,10 +112,21 @@ const MovieDetails = () => {
           </NavLink>
         </div>
       </div>
-      <Outlet />
+      <Suspense
+        fallback={
+          <BarLoader
+            color="#800f0f"
+            cssOverride={null}
+            height={8}
+            width={200}
+          />
+        }
+      >
+        <Outlet />
+      </Suspense>
     </>
   ) : (
-    <div>
+    <div className={s.wrapperProgressBar}>
       <ProgressBar
         height="80"
         width="150"

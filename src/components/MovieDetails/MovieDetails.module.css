@@ -74,3 +74,12 @@
   color: white;
   background-color: var(--accent-text-color);
 }
+
+.wrapperProgressBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* bordercolor: #2900ae; */
+  /* borderColor: #125a1f */
+  /* borderColor:#800f0f */
+}

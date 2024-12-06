@@ -1,0 +1,36 @@
+.wrapperNotFoundPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px;
+  position: relative;
+}
+
+.imageNotFoundPage {
+  margin-top: 10px;
+}
+
+.linkFromNotFoundPage {
+  position: absolute;
+  left: 220px;
+
+  font-family: 'Great Vibes', Arial;
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--second-text-color);
+  background-color: aliceblue;
+  border: solid 1px var(--second-text-color);
+  border-radius: 6px;
+
+  padding: 2px 12px 2px 12px;
+
+  transform: var(--transition-duration-and-timing-function);
+}
+
+.linkFromNotFoundPage:focus,
+.linkFromNotFoundPage:hover {
+  color: var(--btn-color-hover-focus);
+  box-shadow: 0px 4px 8px rgba(199, 212, 6, 0.5);
+}

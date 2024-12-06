@@ -6,6 +6,7 @@ import s from './MoviesList.module.css';
 
 const MoviesList = ({ data, baseUrl }) => {
   const location = useLocation();
+
   return (
     <ul className={s.listTrendingFilmsWrapper}>
       {data?.map(movie => (
