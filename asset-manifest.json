@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-rework-05-movies/static/css/main.f2a45ea4.css",
-    "main.js": "/react-rework-05-movies/static/js/main.75afc858.js",
+    "main.js": "/react-rework-05-movies/static/js/main.41e5bfaa.js",
     "static/css/431.bd201114.chunk.css": "/react-rework-05-movies/static/css/431.bd201114.chunk.css",
     "static/js/431.e00f3941.chunk.js": "/react-rework-05-movies/static/js/431.e00f3941.chunk.js",
     "static/css/987.a26a6512.chunk.css": "/react-rework-05-movies/static/css/987.a26a6512.chunk.css",
@@ -18,7 +18,7 @@
     "static/js/915.4dea15a2.chunk.js": "/react-rework-05-movies/static/js/915.4dea15a2.chunk.js",
     "static/css/188.c477bbf8.chunk.css": "/react-rework-05-movies/static/css/188.c477bbf8.chunk.css",
     "static/js/188.580163c4.chunk.js": "/react-rework-05-movies/static/js/188.580163c4.chunk.js",
-    "static/css/20.3ec0c8c2.chunk.css": "/react-rework-05-movies/static/css/20.3ec0c8c2.chunk.css",
+    "static/css/20.7009dcaf.chunk.css": "/react-rework-05-movies/static/css/20.7009dcaf.chunk.css",
     "static/js/20.4cb1b6bc.chunk.js": "/react-rework-05-movies/static/js/20.4cb1b6bc.chunk.js",
     "static/js/954.24ff536c.chunk.js": "/react-rework-05-movies/static/js/954.24ff536c.chunk.js",
     "static/media/Klopp_Street_art.webp": "/react-rework-05-movies/static/media/Klopp_Street_art.f5d86cbbb7f0c7f9b016.webp",
@@ -28,7 +28,7 @@
     "static/media/green-ava2 (1).webp": "/react-rework-05-movies/static/media/green-ava2 (1).960227c5140e1c78b7a7.webp",
     "index.html": "/react-rework-05-movies/index.html",
     "main.f2a45ea4.css.map": "/react-rework-05-movies/static/css/main.f2a45ea4.css.map",
-    "main.75afc858.js.map": "/react-rework-05-movies/static/js/main.75afc858.js.map",
+    "main.41e5bfaa.js.map": "/react-rework-05-movies/static/js/main.41e5bfaa.js.map",
     "431.bd201114.chunk.css.map": "/react-rework-05-movies/static/css/431.bd201114.chunk.css.map",
     "431.e00f3941.chunk.js.map": "/react-rework-05-movies/static/js/431.e00f3941.chunk.js.map",
     "987.a26a6512.chunk.css.map": "/react-rework-05-movies/static/css/987.a26a6512.chunk.css.map",
@@ -45,12 +45,12 @@
     "915.4dea15a2.chunk.js.map": "/react-rework-05-movies/static/js/915.4dea15a2.chunk.js.map",
     "188.c477bbf8.chunk.css.map": "/react-rework-05-movies/static/css/188.c477bbf8.chunk.css.map",
     "188.580163c4.chunk.js.map": "/react-rework-05-movies/static/js/188.580163c4.chunk.js.map",
-    "20.3ec0c8c2.chunk.css.map": "/react-rework-05-movies/static/css/20.3ec0c8c2.chunk.css.map",
+    "20.7009dcaf.chunk.css.map": "/react-rework-05-movies/static/css/20.7009dcaf.chunk.css.map",
     "20.4cb1b6bc.chunk.js.map": "/react-rework-05-movies/static/js/20.4cb1b6bc.chunk.js.map",
     "954.24ff536c.chunk.js.map": "/react-rework-05-movies/static/js/954.24ff536c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2a45ea4.css",
-    "static/js/main.75afc858.js"
+    "static/js/main.41e5bfaa.js"
   ]
 }
