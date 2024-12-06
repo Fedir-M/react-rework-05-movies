@@ -14,7 +14,10 @@
 
 .linkFromNotFoundPage {
   position: absolute;
-  left: 220px;
+  top: 50%;
+  left: 33%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
 
   font-family: 'Great Vibes', Arial;
   font-size: 40px;
